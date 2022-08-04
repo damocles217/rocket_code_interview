@@ -1,0 +1,7 @@
+// For debugging and testing
+{
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"isolatedModules": true // Faster transpilation (it allow not check types inter different modules)
+	}
+}
