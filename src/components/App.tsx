@@ -1,9 +1,10 @@
 import React, { ComponentType } from 'react';
 import Header from './Header/Header';
+import style from './App.module.scss';
 
 const App: ComponentType = () => {
   return (
-    <div>
+    <div className={style.main}>
       <Header />
       <div>Hola</div>
     </div>
