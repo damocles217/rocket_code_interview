@@ -3,8 +3,8 @@ import React from 'react';
 import { unmountComponentAtNode } from 'react-dom';
 import App from './App';
 
-jest.mock('./App', () => {
-  return jest.fn(() => <App />);
+jest.mock('./Header/Header', () => {
+  return jest.fn(() => <div id="mock">mocked</div>);
 });
 
 let container: HTMLElement | null = null;
@@ -18,8 +18,13 @@ afterEach(() => {
   container.remove();
   container = null;
 });
-test('Descrbie', async () => {
-  act(() => {
-    render(<App />, { container: container });
+
+describe('App Component', () => {
+  it('Must render the header mocked', () => {
+    act(() => {
+      render(<App />, { container: container });
+    });
+
+    expect(screen.getByText(/mocked/i)).toBeInTheDocument();
   });
 });
