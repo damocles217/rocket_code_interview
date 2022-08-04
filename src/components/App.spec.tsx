@@ -4,24 +4,22 @@ import { unmountComponentAtNode } from 'react-dom';
 import App from './App';
 
 jest.mock('./App', () => {
-	return jest.fn(() => <App />);
+  return jest.fn(() => <App />);
 });
 
 let container: HTMLElement | null = null;
 beforeEach(() => {
-	container = document.createElement('div');
-	document.body.appendChild(container);
+  container = document.createElement('div');
+  document.body.appendChild(container);
 });
 
 afterEach(() => {
-	unmountComponentAtNode(container);
-	container.remove();
-	container = null;
+  unmountComponentAtNode(container);
+  container.remove();
+  container = null;
 });
 test('Descrbie', async () => {
-	act(() => {
-		render(<App />, { container: container });
-	});
-	expect(screen.getByText('Hello World')).toBeInTheDocument();
-	expect(screen.findByTestId('login-form'));
+  act(() => {
+    render(<App />, { container: container });
+  });
 });
