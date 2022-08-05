@@ -1,5 +1,11 @@
-import { render, screen, act, fireEvent } from '@testing-library/react';
-import React from 'react';
+import {
+  render,
+  screen,
+  act,
+  fireEvent,
+  waitFor,
+} from '@testing-library/react';
+import React, { Suspense } from 'react';
 import Chat from './Chat';
 
 jest.mock('../Born/Born', () => {
@@ -15,49 +21,53 @@ jest.mock('../Name/Name', () => {
 
 beforeEach(() => {
   act(() => {
-    render(<Chat />);
+    render(
+      <Suspense fallback={'loading'}>
+        <Chat />
+      </Suspense>,
+    );
   });
 });
 
 describe('Chat component', () => {
-  it('Render chat component', () => {
-    const form = screen.getByRole('form');
+  it('Render chat component', async () => {
+    const form = await screen.findByRole('form');
 
     expect(form.children.length).toBe(2);
-    expect(screen.getByText(/Siguiente/i)).toBeInTheDocument();
+    expect(await screen.findByText(/Siguiente/i)).toBeInTheDocument();
   });
 
-  it('Must set an unique value in the messages', () => {
-    const textTest = screen.getByTestId('textarea');
-    const button = screen.getByRole('button', { name: /Siguiente/i });
+  it('Must set an unique value in the messages', async () => {
+    const textTest = await screen.findByTestId('textarea');
+    const button = await screen.findByRole('button', { name: /Siguiente/i });
 
     fireEvent.change(textTest, { target: { value: 'Hi rocket code' } });
     fireEvent.click(button);
 
-    expect(screen.getByText(/Hi rocket code/i)).toBeInTheDocument();
+    expect(await screen.findByText(/Hi rocket code/i)).toBeInTheDocument();
   });
 
   it('Must set values in the messages', async () => {
-    const textTest = screen.getByRole('textbox');
-    const button = screen.getByTestId('button');
+    const textTest = await screen.findByRole('textbox');
+    const button = await screen.findByTestId('button');
 
     fireEvent.change(textTest, { target: { value: 'Hi rocket 1' } });
-    fireEvent.click(button);
+    await waitFor(() => fireEvent.click(button));
 
     fireEvent.change(textTest, { target: { value: 'Hi rocket 2' } });
-    fireEvent.click(button);
+    await waitFor(() => fireEvent.click(button));
 
     fireEvent.change(textTest, { target: { value: 'Hi rocket 3' } });
-    fireEvent.click(button);
+    await waitFor(() => fireEvent.click(button));
 
-    expect(screen.getByText(/Hi rocket 1/i)).toBeInTheDocument();
-    expect(screen.getByText(/Hi rocket 2/i)).toBeInTheDocument();
-    expect(screen.getByText(/Hi rocket 3/i)).toBeInTheDocument();
+    expect(await screen.findByText(/Hi rocket 1/i)).toBeInTheDocument();
+    expect(await screen.findByText(/Hi rocket 2/i)).toBeInTheDocument();
+    expect(await screen.findByText(/Hi rocket 3/i)).toBeInTheDocument();
   });
 
-  it('Must render and show the components mocked', () => {
-    const textTest = screen.getByRole('textbox');
-    const button = screen.getByTestId('button');
+  it('Must render and show the components mocked', async () => {
+    const textTest = await screen.findByRole('textbox');
+    const button = await screen.findByTestId('button');
 
     fireEvent.change(textTest, { target: { value: 'Hi rocket 1' } });
     fireEvent.click(button);

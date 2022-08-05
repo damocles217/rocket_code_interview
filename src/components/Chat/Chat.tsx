@@ -1,4 +1,4 @@
-import React, { ComponentType, useEffect, useRef, useState, memo } from 'react';
+import React, { ComponentType, useEffect, useRef, memo, lazy } from 'react';
 import {
   handleChange,
   handleSubmit,
@@ -6,26 +6,16 @@ import {
   handleClick,
 } from './chat.utils';
 import style from './sass/Chat.module.scss';
-import { FormType } from 'types/form';
-import Name from '../Name/Name';
-import Contact from '../Contact/Contact';
-import Born from '../Born/Born';
-import Error from '../Error/Error';
-import Modal from '../Modal/Modal';
+const Name = lazy(() => import('../Name/Name'));
+const Contact = lazy(() => import('../Contact/Contact'));
+const Born = lazy(() => import('../Born/Born'));
+const Error = lazy(() => import('../Error/Error'));
+const Modal = lazy(() => import('../Modal/Modal'));
+import { useChat } from '@src/hooks/useChat';
 
 const Chat: ComponentType = () => {
-  const [text, setText] = useState<string>('');
-  const [form, setForm] = useState<FormType>({
-    born_date: '',
-    email: '',
-    fullname: '',
-    phone: '',
-  });
-  const [final, setFinal] = useState<boolean>(false);
-
-  const [messages, setMessages] = useState<
-    Array<{ owner: string; message: string }>
-  >([]);
+  const [text, form, final, messages, setText, setForm, setFinal, setMessages] =
+    useChat();
 
   const chatRef = useRef(null);
 
