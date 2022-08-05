@@ -56,18 +56,49 @@
 }
 
 .message {
-  align-self: flex-end;
-  padding: 1%;
-  margin-right: 5%;
-  margin-top: 3%;
-  min-width: 5rem;
-  max-width: 80%;
-  background-color: rgb(216, 24, 241);
-  color: black;
-  border-radius: 20px;
+  background-color: $message-bg;
+  color: $message-color;
+  @extend .message-obj;
   p {
     width: 100%;
     word-break: break-all;
     text-align: right;
+  }
+}
+
+.messageCompany {
+  background-color: $company-bg;
+  color: $company-color;
+  span {
+    border-bottom: 1px white;
+  }
+  @extend .message-company-obj;
+  p {
+    width: 100%;
+    word-break: break-all;
+    text-align: right;
+  }
+}
+
+.messageError {
+  background-color: $error-bg;
+  color: $error-color;
+  @extend .message-company-obj;
+  p {
+    width: 100%;
+    word-break: break-all;
+    text-align: right;
+  }
+}
+
+.img {
+  width: 8rem;
+  height: 8rem;
+  margin-right: 5%;
+  img {
+    border-radius: 60px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
