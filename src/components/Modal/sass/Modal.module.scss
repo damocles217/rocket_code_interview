@@ -1,0 +1,26 @@
+@import './objects/objects.scss';
+@import './settings/media.scss';
+@import './tools/tools.scss';
+
+.modal {
+  @extend .modal-obj;
+  @include size(20%);
+
+  @include screenTablet {
+    width: 40vw;
+    @include size(30%);
+  }
+  @include screenTabletLand {
+    width: 40vw;
+    @include size(30%);
+  }
+  @include screenLap {
+    width: 25%;
+    @include size(20%);
+  }
+  @include screenMax {
+    width: 20%;
+    height: 10vh;
+    @include size(20%);
+  }
+}

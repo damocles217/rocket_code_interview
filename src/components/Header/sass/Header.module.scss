@@ -12,6 +12,17 @@
   @include screenTablet {
     font-size: $font-tablet;
   }
+
+  @include screenTabletLand {
+    font-size: $font-tablet;
+  }
+
+  @include screenLap {
+    height: 15vh;
+    align-items: center;
+    font-size: $font-max;
+  }
+
   @include screenMax {
     height: 15vh;
     align-items: center;

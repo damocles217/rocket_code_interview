@@ -1,12 +1,17 @@
-import React, { ComponentType } from 'react';
-import Header from './Header/Header';
+import React, { ComponentType, lazy, Suspense } from 'react';
+const Header = lazy(() => import('./Header/Header'));
+const Chat = lazy(() => import('./Chat/Chat'));
+
+// Styles
 import style from './App.module.scss';
 
 const App: ComponentType = () => {
   return (
     <div className={style.main}>
       <Header />
-      <div>Hola</div>
+      <Suspense fallback={<div />}>
+        <Chat />
+      </Suspense>
     </div>
   );
 };
