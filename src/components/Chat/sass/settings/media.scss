@@ -1,25 +1,20 @@
-// portrait tablet and large phones
 @mixin screenTablet {
   @media screen and (min-width: 600px) {
     @content;
   }
 }
-
-// landscape tablet
 @mixin screenTabletLand {
   @media screen and (min-width: 768px) {
     @content;
   }
 }
 
-// desktop/ laptop
 @mixin screenLap {
   @media screen and (min-width: 992px) {
     @content;
   }
 }
 
-// Large desktop/laptop
 @mixin screenMax {
   @media screen and (min-width: 1200px) {
     @content;

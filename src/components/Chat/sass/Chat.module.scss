@@ -1,0 +1,73 @@
+@import './objects/objects.scss';
+@import './settings/media.scss';
+@import './settings/palette.scss';
+
+.chat {
+  @extend .chat-obj;
+  background-color: $chat-bg;
+
+  @include screenTablet {
+    height: 65vh;
+    width: 100%;
+    margin: 0;
+  }
+
+  @include screenLap {
+    width: 80%;
+    height: 65vh;
+    margin-top: 5%;
+  }
+
+  @include screenMax {
+    width: 70%;
+    height: 65vh;
+    scroll-behavior: smooth;
+    margin-top: 3%;
+  }
+
+  &__text {
+    @extend .text-obj;
+
+    @include screenTablet {
+      width: 100%;
+    }
+    @include screenLap {
+      width: 80%;
+      height: 10%;
+      bottom: 2%;
+    }
+    @include screenMax {
+      width: 70%;
+      height: 5%;
+      bottom: 4%;
+    }
+
+    textarea {
+      resize: none;
+      @extend .textarea-obj;
+    }
+    button {
+      background-color: $button-bg;
+      font-weight: 500;
+      color: $button-color;
+      @extend .button-obj;
+    }
+  }
+}
+
+.message {
+  align-self: flex-end;
+  padding: 1%;
+  margin-right: 5%;
+  margin-top: 3%;
+  min-width: 5rem;
+  max-width: 80%;
+  background-color: rgb(216, 24, 241);
+  color: black;
+  border-radius: 20px;
+  p {
+    width: 100%;
+    word-break: break-all;
+    text-align: right;
+  }
+}
