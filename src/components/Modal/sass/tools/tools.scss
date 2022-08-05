@@ -1,0 +1,28 @@
+@import '../settings/palette.scss';
+
+@mixin size($size: 100%) {
+  @keyframes modalScreen {
+    0% {
+      display: flex;
+      background-color: $modal-bg;
+      color: transparent;
+      height: 0;
+    }
+    25% {
+      height: $size;
+      color: $modal-color;
+    }
+    80% {
+      height: $size;
+      background-color: $modal-bg;
+      color: $modal-color;
+    }
+    100% {
+      display: none !important;
+      height: 0;
+      color: transparent;
+    }
+  }
+
+  animation: modalScreen 5s forwards;
+}
