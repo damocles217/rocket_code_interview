@@ -11,7 +11,6 @@ const config: Configuration = {
     path: resolve(__dirname, '..', 'dist'),
     filename: '[name].[fullhash].js',
     clean: true,
-    publicPath: '/',
   },
 
   resolve: {
@@ -25,7 +24,7 @@ const config: Configuration = {
     new MiniCssExtract(),
     new HtmlPlugin({
       scriptLoading: 'module',
-      template: '/global/index.html',
+      template: './global/index.html',
       minify: true,
     }),
   ],
