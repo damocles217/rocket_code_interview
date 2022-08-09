@@ -68,7 +68,7 @@ export const handleSubmit = (
     else if (arrText[0].includes('@') && arrText[1].length >= 10) {
       setForm({ ...form, email: arrText[0], phone: arrText[1] });
     } else if (arrText[1].includes('@') && arrText[0].length >= 10) {
-      setForm({ ...form, email: arrText[1], phone: arrText[1] });
+      setForm({ ...form, email: arrText[1], phone: arrText[0] });
     } else
       setMessages(prev => [
         ...prev,
