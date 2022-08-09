@@ -9,7 +9,6 @@ const config = merge<Configuration>(CommonConfig, {
   devtool: 'inline-source-map', // it has a greater size but is for dev
 
   devServer: {
-    host: '192.168.1.67',
     port: 5000,
 
     static: {
