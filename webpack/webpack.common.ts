@@ -24,7 +24,7 @@ const config: Configuration = {
     new MiniCssExtract(),
     new HtmlPlugin({
       scriptLoading: 'module',
-      template: './global/index.html',
+      template: resolve(__dirname, '..', 'global', 'index.html'),
       minify: true,
     }),
   ],
